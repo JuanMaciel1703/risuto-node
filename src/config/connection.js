@@ -3,10 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.DBPASSWORD}@risuto-app-ope4b.mongodb.net/test?retryWrites=true&w=majority`, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
-
-console.log(mongoose);
 
 module.exports = mongoose;
