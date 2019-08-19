@@ -1,7 +1,12 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const routes = require('./src/routes/routes');
+const app = express();
+const server = require('http').Server(app);
+const mongoose = require('./src/config/connection');
 
-express()
-  .get('/', (req, res) => res.json({message: "Hello World"}))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+const LISTEN_PORT = 5000;
+
+app.use(express.json());
+app.use(routes);
+
+server.listen(LISTEN_PORT);
