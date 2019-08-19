@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 
-// dotenv.config();
+dotenv.config();
 
-// console.log(process.env);
+mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.DBPASSWORD}@risuto-app-ope4b.mongodb.net/test?retryWrites=true&w=majority`, {
+  useNewUrlParser: true
+});
 
-// mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.DBPASSWORD}@risuto-app-ope4b.mongodb.net/test?retryWrites=true&w=majority`, {
-//   useNewUrlParser: true
-// });
+console.log(mongoose);
 
 module.exports = mongoose;

@@ -1,9 +1,9 @@
 const express = require('express');
-
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    res.json({ message: 'root'});
-});
+const ListController = require('../controllers/ListController');
+
+routes.get('/list', ListController.index);
+routes.post('/list', ListController.store);
 
 module.exports = routes;
