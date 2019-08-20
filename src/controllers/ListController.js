@@ -19,6 +19,6 @@ module.exports = {
       name
     })
 
-    return res.json(list);
+    return res.status(201).json(list);
   }
 };

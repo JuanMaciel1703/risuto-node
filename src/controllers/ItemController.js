@@ -58,6 +58,6 @@ module.exports = {
 
         await list.save();
 
-        return res.json(item);
+        return res.status(201).json(item);
     }
 }
