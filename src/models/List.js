@@ -6,8 +6,10 @@ const ListSchema = new Schema({
     required: true,
   },
   items: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Item'
+    item: { type: Schema.Types.ObjectId, ref: 'Item' },
+    quantity: { type: Number, default: 1 },
+    observation: { type: String, default: "" },
+    checked: { type: Boolean, default: false }
   }]
 }, {
   timestamps: true,
