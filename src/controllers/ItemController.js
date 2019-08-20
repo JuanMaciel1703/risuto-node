@@ -3,12 +3,19 @@ const List = require('../models/List');
 
 module.exports = {
     async index(req, res) {
-        const { listId } = req.params;
+        const { listId, userId } = req.params;
         let list = null;
         let error = null;
 
         try {
-            list = await List.findById(listId, {}).exec();
+            list = await List.findOne({_id: listId}).
+                populate({
+                    path: "users",
+                    match: {
+                        _id: userId
+                    }
+                }).
+                exec();
         } catch (err) {
             error = err;
         }
@@ -25,14 +32,21 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { listId } = req.params;
-        const { name, description, quantity, observation } = req.body;
-
+        const { listId, userId } = req.params;
+        const { name, quantity, observation } = req.body;
+        
         let list = null;
         let error = null;
 
         try {
-            list = await List.findById(listId, {}).exec();
+            list = await List.findOne({_id: listId}).
+                populate({
+                    path: "users",
+                    match: {
+                        _id: userId
+                    }
+                }).
+                exec();
         } catch (err) {
             error = err;
         }
