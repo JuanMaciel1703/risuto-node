@@ -18,9 +18,7 @@ module.exports = {
 
     async logout(req, res) {
         // Log user out of the application
-        try {
-            console.log(req.user);
-            
+        try {            
             req.user.tokens = req.user.tokens.filter((token) => {
                 return token.token != req.token
             })
