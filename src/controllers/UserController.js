@@ -21,7 +21,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { name, email } = req.body;
+    const { name, email, password } = req.body;
 
     const userExists = await User.findOne({ email }).exec();
 
@@ -29,8 +29,16 @@ module.exports = {
       return res.status(400).json({ message: `User with email ${email} already registered`});
     }
 
-    const user = await User.create({ name, email });
+    try {
+      const user = new User({ name, email, password });
+      await user.save();
+      const token = await user.generateAuthToken()
+  
+      res.status(201).send({ user, token });
+    } catch (err) {
+      res.status(400).send(err);
+    }
 
-    return res.status(201).json(user);
+    return res;
   }
 };
