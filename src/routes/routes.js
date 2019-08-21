@@ -8,6 +8,8 @@ const UserController = require('../controllers/UserController');
 const AuthController = require('../controllers/AuthController');
 
 routes.post('/login', AuthController.login);
+routes.post('/logout', authMiddleware, AuthController.logout);
+routes.post('/logoutall', authMiddleware, AuthController.logoutAll);
 
 routes.get('/users/:id', UserController.index);
 routes.post('/users', UserController.store);
