@@ -3,8 +3,8 @@ const User = require('../models/User')
 
 const auth = async(req, res, next) => {
     try {
-        const authorization = req.header('Authorization');
-        if (!authorization) throw new Error("Authorization Token not valid");
+        const authorization = req.header('Authorization') 
+        if (!authorization) throw new Error("Authorization Token not valid") 
         const token = authorization.replace('Bearer ', '')
         const data = jwt.verify(token, process.env.JWT_KEY)
     

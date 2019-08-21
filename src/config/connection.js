@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const mongoose = require('mongoose') 
+const dotenv = require('dotenv') 
 
-dotenv.config();
+dotenv.config() 
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
-});
+}) 
 
-module.exports = mongoose;
+module.exports = mongoose 

@@ -1,10 +1,10 @@
-const List = require('../models/List');
-const User = require('../models/User');
+const List = require('../models/List') 
+const User = require('../models/User') 
 
 module.exports = {
   async index(req, res) {
-    const { userId } = req.params;
-    const user = await User.findById(userId).exec();
+    const { userId } = req.params 
+    const user = await User.findById(userId).exec() 
     let lists = await List.
       find().
       populate({
@@ -13,16 +13,16 @@ module.exports = {
           _id: user._id
         }
       }).
-      exec();
+      exec() 
 
-    return res.json(lists);
+    return res.json(lists) 
   },
 
   async store(req, res) {
-    const { userId } = req.params;
-    const { name } = req.body;
+    const { userId } = req.params 
+    const { name } = req.body 
 
-    const user = await User.findById(userId).exec();
+    const user = await User.findById(userId).exec() 
     const listExists = await List.
       find({ name }).
       populate({
@@ -31,18 +31,18 @@ module.exports = {
           _id: user._id
         }
       }).
-      exec();
+      exec() 
 
-      console.log(listExists);
+      console.log(listExists) 
 
     if (listExists.length > 0) {
-      return res.json(listExists);
+      return res.json(listExists) 
     }
 
-    const list = await List.create({ name });
-    list.users.push(user._id);
-    list.save();
+    const list = await List.create({ name }) 
+    list.users.push(user._id) 
+    list.save() 
 
-    return res.status(201).json(list);
+    return res.status(201).json(list) 
   }
-};
+} 

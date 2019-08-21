@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose') 
 
 const ListSchema = new Schema({
   name: {
@@ -16,6 +16,6 @@ const ListSchema = new Schema({
   }]
 }, {
   timestamps: true,
-});
+}) 
 
-module.exports = model('List', ListSchema);
+module.exports = model('List', ListSchema) 

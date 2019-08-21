@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require('mongoose') 
+const bcrypt = require('bcrypt') 
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 
@@ -16,7 +16,7 @@ const UserSchema = new Schema({
       lowercase: true,
       validate: value => {
         if (!validator.isEmail(value)) {
-          throw new Error({ error: "Invalid Email Address" });
+          throw new Error({ error: "Invalid Email Address" }) 
         }
       }
   },
@@ -33,7 +33,7 @@ const UserSchema = new Schema({
   }]
 }, {
   timestamps: true,
-});
+}) 
 
 UserSchema.pre('save', async function (next) {
   // Hash the password before saving the user model
@@ -68,4 +68,4 @@ UserSchema.statics.findByCredentials = async (email, password) => {
 
 const User = model('User', UserSchema)
 
-module.exports = User;
+module.exports = User 

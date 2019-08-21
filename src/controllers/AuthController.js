@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/User') 
 
 module.exports = {
     async login(req, res) {
@@ -13,7 +13,7 @@ module.exports = {
         } catch (error) {
             res.status(400).send(error)
         }
-        return res.status(201).json(user);
+        return res.status(201).json(user) 
     },
 
     async logout(req, res) {
@@ -39,4 +39,4 @@ module.exports = {
             res.status(500).send(error)
         }
     }
-};
+} 
